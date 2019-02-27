@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Grafiek animeren</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+
+    <style>
+    #wrapperG {
+      width: 1000px;
+      height: 1000px;
+      margin: 100px auto;
+
+    }
+
+
+
+      .st0{fill:#0097A7;}
+      .st1{fill:#0097A7;}
+      .st2{fill:#0097A7;}
+      .st3{fill:#0097A7;}
+
+    /*  .st0{fill:#EF5350;}
+      .st1{fill:#4FC3F7;}
+      .st2{fill:#FFA726;}
+      .st3{fill:#0097A7;}
+    */
+
+
+    /*top:233
+    left:660*/
+    .rondje {
+      position: absolute;
+      top:233px;
+      left:660px;
+      fill:
+    }
+
+
+
+
+    </style>
+  </head>
+  <body
+
+    <div id="wrapperG">
+
+      <svg class="rondje" height="500" width="500">
+      <circle  cx="155" cy="155" r="155"  fill="#0097A7" />
+      </svg>
+
+
+
+      <?xml version="1.0" encoding="utf-8"?>
+      <!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+      	 viewBox="0 0 1366 768" style="enable-background:new 0 0 1366 768;" xml:space="preserve">
+
+      <g>
+      	<path id="p4" class="st0" d="M717,178.7c-46.8,0-90.1,15.1-125.2,40.7L717,391.7V178.7z"/>
+      	<path id="p3" class="st1" d="M842.2,219.7C807.1,194.1,763.8,179,717,179v213.1l202.7-65.9C905.6,283,878.2,245.8,842.2,219.7z"/>
+      	<path id="p2" class="st2" d="M919.9,324.1l-202.7,65.9l125.2,172.4c36-26.2,63.4-63.3,77.4-106.5c6.7-20.7,10.4-42.9,10.4-65.9
+      		S926.6,344.8,919.9,324.1z"/>
+      	<path id="p1" class="st3" d="M717.2,389.9L591.9,217.5c-36,26.2-63.4,63.3-77.4,106.5c-6.7,20.7-10.4,42.9-10.4,65.9
+      		s3.7,45.1,10.4,65.9c14,43.2,41.5,80.4,77.4,106.5c35.1,25.6,78.4,40.7,125.2,40.7c46.8,0,90.1-15.1,125.2-40.7L717.2,389.9z"/>
+      </g>
+      </svg>
+
+
+
+    <hr>
+
+
+  </div>
+
+
+
+                        <!--Javascript sectie-->
+      <script>
+
+
+      function hide(){
+
+        var tl = new TimelineMax()
+          tl.set("#p4",{opacity:0})
+          tl.set("#p3",{opacity:0})
+          tl.set("#p2",{opacity:0})
+          tl.set("#p1",{opacity:0})
+
+          return tl;
+      }
+
+
+      function timeLineOne(){
+
+      var tl = new TimelineMax()
+        tl.from(".rondje",1,{scale:0})
+        tl.to(".rondje",0,{opacity:0})
+          return tl;
+      }
+
+
+
+        function timeLineTwo(){
+
+        var tl = new TimelineMax()
+        tl.set("#p4",{opacity:1})
+        tl.set("#p3",{opacity:1})
+        tl.set("#p2",{opacity:1})
+        tl.set("#p1",{opacity:1})
+        tl.add("fadeIn")
+        tl.from("#p4",0.0001,{opacity:0},"fadeIn")
+        tl.from("#p3",0.0001,{opacity:0},"fadeIn")
+        tl.from("#p2",0.0001,{opacity:0},"fadeIn")
+        tl.from("#p1",0.0001,{opacity:0},"fadeIn")
+        tl.add("kleur")
+        tl.to("#p4",1, {fill:"green"},"kleur")
+        tl.to("#p3",1, {fill:"red"},"kleur +=0.5")
+        tl.to("#p2",1, {fill:"yellow"},"kleur +=1")
+        tl.add("fadeOut")
+        tl.to("#p2",0.7, {x:50,y:5}, "fadeOut +=0.5")
+        tl.to("#p3",0.7, {x:55,y:-6},"fadeOut +=1")
+        tl.to("#p4",0.7, {x:48,y:-3},"fadeOut +=1.5")
+
+
+
+
+
+        //  tl.from("rect.cls-4",1, {scaleY:0, transformOrigin:"0% 50%"},"point2")
+        return tl;
+}
+
+
+
+
+
+function masterTimeline(){
+  var tl= new TimelineMax()
+    tl.add(timeLineOne())
+    tl.add(timeLineTwo());
+
+}
+hide();
+masterTimeline();
+
+
+
+
+
+
+      </script>
+
+
+
+
+
+  </body>
+</html>
